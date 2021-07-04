@@ -1,5 +1,5 @@
 <template>
-    
+    <p>56456</p>
 </template>
 
 <script>

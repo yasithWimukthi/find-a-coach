@@ -1,3 +1,5 @@
+import {createRouter,createWebHashHistory} from 'vue-router'
+
 import CoachesList from './pages/coaches/CoachesList';
 import CoachDetails from './pages/coaches/CoachDetails';
 import ContactCoach from './pages/requests/ContactCoach';
@@ -16,8 +18,8 @@ const routes = [
   {path:'/:notFound(.*)',component:NotFound}
 ];
 
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
+const router = createRouter({
+  history: createWebHashHistory(),
   routes
 })
 

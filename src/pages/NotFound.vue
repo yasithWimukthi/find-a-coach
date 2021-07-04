@@ -1,5 +1,5 @@
 <template>
-    
+    <p>ihi</p>
 </template>
 
 <script>

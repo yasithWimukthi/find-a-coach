@@ -1,5 +1,5 @@
 <template>
-    <p>54</p>
+    <p>register</p>
 </template>
 
 <script>

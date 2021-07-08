@@ -31,7 +31,7 @@
              <label for="career">Career Advisory</label>
          </div>
      </div>
-     <base-button>Register</base-button>
+     <base-button >Register</base-button>
  </form>
 </template>
 

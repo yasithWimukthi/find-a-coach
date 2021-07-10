@@ -5,7 +5,14 @@
                 <h2>Received Requests</h2>
             </header>
             <ul v-if="hasRequests">
+                <request-item
+                        v-for="request in receivedRequests"
+                        :key="request.id"
+                        :email="request.userEmail"
+                        :message="request.message"
+                >
 
+                </request-item>
             </ul>
             <h3 v-else>You have not received any requests yet!</h3>
         </base-card>
@@ -13,8 +20,13 @@
 </template>
 
 <script>
+  import RequestItem from '../components/requests/RequestItem';
+
   export default {
     name: 'RequestsReceived',
+    components:{
+      RequestItem
+    },
     computed:{
       receivedRequests(){
         return this.$store.getters['requests/requests'];

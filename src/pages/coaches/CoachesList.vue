@@ -37,6 +37,7 @@
     data(){
       return{
         isLoading:false,
+        error:null,
         activeFilters:{
           frontend:true,
           backend:true,
@@ -67,7 +68,12 @@
       },
       async loadCoaches(){
         this.isLoading = true;
-        await this.$store.dispatch('coaches/loadCoaches');
+        try{
+          await this.$store.dispatch('coaches/loadCoaches');
+        }catch(error){
+          this.error = error.message || 'Unable to load coach data.'
+        }
+
         this.isLoading = false;
       }
     },

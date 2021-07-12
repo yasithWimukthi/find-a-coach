@@ -1,4 +1,7 @@
 <template>
+    <base-dialog :show="!!error" title="An error occurred." @close="handleError">
+        <p>{{error}}</p>
+    </base-dialog>
     <section>
         <filter-coach @change-filter="setFilters"></filter-coach>
     </section>
@@ -79,6 +82,9 @@
     },
     created() {
       this.loadCoaches();
+    },
+    handleError(){
+      this.error = null;
     }
   };
 </script>

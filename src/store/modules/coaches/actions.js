@@ -17,7 +17,7 @@ export default {
       body:JSON.stringify(coachData)
     });
 
-    const responseData = await response.json();
+    //const responseData = await response.json();
 
     if(!response.ok){
       //error
@@ -30,7 +30,10 @@ export default {
   },
 
   /*** get data from firebase*/
-  async loadCoaches(context){
+  async loadCoaches(context,payload){
+
+    if(!context.getters.shouldUpdate && !payload.forceRefresh) return;
+
     const response = await fetch(`https://vue-find-coach-23ff7-default-rtdb.firebaseio.com/coaches.json`);
     const responseData = await response.json();
 
@@ -54,7 +57,7 @@ export default {
     }
 
     context.commit('setCoaches',coaches);
-
+    context.commit('setFetchTimestamp');
   }
 
 }

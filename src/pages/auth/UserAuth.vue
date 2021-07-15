@@ -1,21 +1,66 @@
 <template>
-    <form>
+    <form @submit.prevent="submitForm">
         <div class="form-control">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" />
+            <label for="email" >E-mail</label>
+            <input type="email" id="email" v-model.trim="email"/>
         </div>
         <div class="form-control">
             <label for="password">Password</label>
-            <input type="password" id="password" />
+            <input type="password" id="password" v-model.trim="password"/>
         </div>
-        <base-button>Login</base-button>
-        <base-button type="button" mode="flat">Sign Up</base-button>
+        <p v-if="!isFormValid">Please enter a valid email and password. </p>
+        <base-button>{{submitButtonCaption}}</base-button>
+        <base-button type="button" mode="flat" @click="switchAuthMode">{{switchModeButtonCaption}}</base-button>
     </form>
 </template>
 
 <script>
   export default {
-    name: 'UserAuth'
+    name: 'UserAuth',
+    data(){
+      return{
+        email:'',
+        password:'',
+        isFormValid:true,
+        mode:'login'
+      }
+    },
+    methods:{
+      submitForm(){
+        this.isFormValid = true;
+        if (
+          this.email === '' ||
+          !this.email.includes('@') ||
+          this.password.length < 6
+        ){
+            this.isFormValid = false;
+            return;
+        }
+      },
+      switchAuthMode(){
+        if (this.mode === 'login'){
+          this.mode = 'signup';
+        }else{
+          this.mode = 'login';
+        }
+      }
+    },
+    computed:{
+      submitButtonCaption(){
+        if (this.mode === 'login'){
+         return 'login';
+        }else{
+          return 'Sign Up';
+        }
+      },
+      switchModeButtonCaption(){
+        if (this.mode === 'login'){
+          return 'Sign Up Instead';
+        }else{
+          return 'Login Instead';
+        }
+      }
+    }
   };
 </script>
 

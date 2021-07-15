@@ -6,6 +6,7 @@ import ContactCoach from './pages/requests/ContactCoach';
 import CoachRegistration from './pages/coaches/CoachRegistration';
 import RequestsReceived from './pages/requests/RequestsReceived';
 import NotFound from './pages/NotFound';
+import UserAuth from './pages/auth/UserAuth';
 
 const routes = [
   {path:'/',redirect:'/coaches'},
@@ -15,6 +16,7 @@ const routes = [
   ]},
   {path:'/register',component:CoachRegistration},
   {path:'/requests',component:RequestsReceived},
+  {path:'/auth',component:UserAuth},
   {path:'/:notFound(.*)',component:NotFound}
 ];
 

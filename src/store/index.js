@@ -12,11 +12,6 @@ const store = createStore({
     coaches: coachesModule,
     requests: requestModule,
     auth: authModule
-  },
-  state(){
-    return {
-      userId:"coach_3"
-    }
   }
 })
 

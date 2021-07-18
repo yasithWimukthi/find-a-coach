@@ -5,7 +5,9 @@ import actions from './actions';
 export default{
   state(){
     return{
-      userId:'coach_3'
+      token: null,
+      userId: null,
+      tokeExpiration: null
     }
   },
   mutations,

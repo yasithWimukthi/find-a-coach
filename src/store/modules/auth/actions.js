@@ -16,5 +16,11 @@ export default {
       const error = new Error(responseData.message || 'Failed to authenticate');
       throw error;
     }
+
+    context.commit('setUser',{
+      token: responseData.idToken,
+      userId: responseData.localId,
+      tokeExpiration: responseData.expiresIn
+    });
   }
 };

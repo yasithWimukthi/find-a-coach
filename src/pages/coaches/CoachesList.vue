@@ -1,5 +1,5 @@
 <template>
-    <base-dialog :show="!!error" title="An error occurred." @close="handleError">
+    <base-dialog :show="!!error" @close="resetError" title="An error occurred." >
         <p>{{error}}</p>
     </base-dialog>
     <section>
@@ -80,12 +80,13 @@
         this.isLoading = false;
       }
     },
+    resetError(){
+      this.error = null;
+    },
     created() {
       this.loadCoaches();
-    },
-    handleError(){
-      this.error = null;
     }
+
   };
 </script>
 

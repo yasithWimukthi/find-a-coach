@@ -61,6 +61,8 @@
               password: this.password
             });
           }
+          const redirectUrl = `/${this.$route.query.redirect || 'coaches'}`;
+          await this.$router.replace(redirectUrl);
         }catch(error){
           this.error = error.message || 'Sign up was failed.';
         }
